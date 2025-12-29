@@ -1,8 +1,20 @@
 {
   "$schema": "https://schema.railpack.com",
+  "provider": "node",
+  "packages": {
+    "node": "22",
+    "pnpm": "9.0",
+    "rust": "1.89"
+  },
   "steps": {
     "install": {
-      "commands": ["npm install -g wasm-pack", "rm -rf pkg", "ls", "wasm-pack build --target web", "pnpm install"]
+      "include": ["."],
+      "exclude": ["node_modules"],
+      "commands": ["npm install -g wasm-pack", "rm -rf pkg", "wasm-pack build --target web", "pnpm install"]
+    },
+    "build": {
+      "inputs": [{ "step": "install" }],
+      "commands": ["pnpm build"]
     }
   }
 }
