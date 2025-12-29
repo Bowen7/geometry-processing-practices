@@ -8,12 +8,13 @@ await init()
 
 interface Props {
   children?: React.ReactNode
+  camera?: [number, number, number]
 }
-export function Canvas({ children }: Props) {
+export function Canvas({ children, camera = [0, 0, 5] }: Props) {
   const { width, height } = useWindowSize()
 
   return (
-    <ThreeCanvas style={{ width, height }}>
+    <ThreeCanvas style={{ width, height }} camera={{ position: camera }}>
       {children}
       <ambientLight intensity={0.1} />
       <directionalLight position={[0, 0, 5]} color="red" />

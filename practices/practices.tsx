@@ -4,7 +4,7 @@ import { Practice02 } from './02'
 export const practices = [
   {
     path: '/01',
-    label: 'Practice 01',
+    label: 'Introduction',
     element: <Practice01 />,
   },
   {

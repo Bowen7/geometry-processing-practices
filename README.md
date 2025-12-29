@@ -23,7 +23,7 @@ pnpm dev
 ```
 
 ### Practices
-- [ ] Introduction. From [geometry-processing-introduction](https://github.com/alecjacobson/geometry-processing-introduction)
+- [x] Introduction. From [geometry-processing-introduction](https://github.com/alecjacobson/geometry-processing-introduction)
 - [ ] Mesh reconstruction. From [geometry-processing-mesh-reconstruction](https://github.com/alecjacobson/geometry-processing-mesh-reconstruction)
 - [ ] Registration. From [geometry-processing-registration](https://github.com/alecjacobson/geometry-processing-registration)
 - [ ] Smoothing. From [geometry-processing-smoothing](https://github.com/alecjacobson/geometry-processing-smoothing)
