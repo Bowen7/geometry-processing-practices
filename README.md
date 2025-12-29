@@ -1,75 +1,32 @@
-# React + TypeScript + Vite
+# Geometry Processing Practices
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Tech Stack
 
-Currently, two official plugins are available:
+#### TS, for rendering
+- react
+- three.js
+- react-three-fiber
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### Rust, for processing geometry
+- faer
 
-## React Compiler
+### Prerequisites
+- Node.js
+- Rust
+- [wasm-pack](https://github.com/drager/wasm-pack)
+- [watchexec](https://github.com/watchexec/watchexec)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Quick Start
+```
+pnpm install
+pnpm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Practices
+- [ ] Introduction. From [geometry-processing-introduction](https://github.com/alecjacobson/geometry-processing-introduction)
+- [ ] Mesh reconstruction. From [geometry-processing-mesh-reconstruction](https://github.com/alecjacobson/geometry-processing-mesh-reconstruction)
+- [ ] Registration. From [geometry-processing-registration](https://github.com/alecjacobson/geometry-processing-registration)
+- [ ] Smoothing. From [geometry-processing-smoothing](https://github.com/alecjacobson/geometry-processing-smoothing)
+- [ ] Parameterization. From [geometry-processing-parameterization](https://github.com/alecjacobson/geometry-processing-parameterization)
+- [ ] Deformation. From [geometry-processing-deformation](https://github.com/alecjacobson/geometry-processing-deformation)
+- [ ] Curvature. From [geometry-processing-curvature](https://github.com/alecjacobson/geometry-processing-curvature)

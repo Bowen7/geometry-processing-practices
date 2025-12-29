@@ -1,17 +1,18 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router";
-import "./index.css";
-import { Navigate } from "react-router";
-import { PracticesSelect, practices } from "./practices-select";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router'
 
-createRoot(document.getElementById("root")!).render(
+import { practices } from './practices'
+import { PracticesSelect } from './practices-select'
+import './index.css'
+
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <PracticesSelect />
       <Routes>
         <Route path="/" element={<Navigate to="/01" replace />} />
-        {practices.map((practice) => (
+        {practices.map(practice => (
           <Route
             key={practice.path}
             path={practice.path}
@@ -20,5 +21,5 @@ createRoot(document.getElementById("root")!).render(
         ))}
       </Routes>
     </BrowserRouter>
-  </StrictMode>
-);
+  </StrictMode>,
+)
