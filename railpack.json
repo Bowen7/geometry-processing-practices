@@ -2,7 +2,7 @@
   "$schema": "https://schema.railpack.com",
   "steps": {
     "install": {
-      "commands": ["npm install -g wasm-pack", "rm -rf pkg", "wasm-pack build --target web", "pnpm install"]
+      "commands": ["npm install -g wasm-pack", "rm -rf pkg", "ls", "wasm-pack build --target web", "pnpm install"]
     }
   }
 }
