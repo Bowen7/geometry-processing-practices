@@ -8,13 +8,11 @@
   },
   "steps": {
     "install": {
-      "include": ["."],
-      "exclude": ["node_modules"],
-      "commands": ["npm install -g wasm-pack", "rm -rf pkg", "wasm-pack build --target web", "pnpm install"]
+      "commands": ["cargo install wasm-pack", "pnpm install"]
     },
     "build": {
       "inputs": [{ "step": "install" }],
-      "commands": ["pnpm build"]
+      "commands": ["wasm-pack build --target web", "pnpm build"]
     }
   }
 }
