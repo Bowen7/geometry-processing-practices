@@ -6,7 +6,7 @@
   "scripts": {
     "wasm:watch": "rm -rf pkg && watchexec -w src -e rs wasm-pack build --target web",
     "dev": "pnpm wasm:watch && vite",
-    "build": "tsc -b && vite build",
+    "build": "wasm-pack build --target web && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -8,11 +8,8 @@
   },
   "steps": {
     "install": {
-      "commands": ["cargo install wasm-pack", "pnpm install"]
-    },
-    "build": {
-      "inputs": [{ "step": "install" }],
-      "commands": ["wasm-pack build --target web", "pnpm build"]
+      "include": ["."],
+      "commands": ["npm install -g wasm-pack", "...", "pnpm install"]
     }
   }
 }
