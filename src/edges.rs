@@ -7,7 +7,7 @@ use crate::utils::*;
 
 #[wasm_bindgen]
 pub fn wasm_edges(faces: Vec<usize>, vertex_count: usize) -> Result<JsValue, JsError> {
-  let F = build_faces(faces);
+  let F = build_F(faces);
   let E = edges(&F, vertex_count);
   let mut edges = Vec::with_capacity(E.nrows() * E.ncols());
   for i in 0..E.nrows() {

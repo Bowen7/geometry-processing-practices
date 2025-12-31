@@ -1,4 +1,4 @@
-import { Environment, OrbitControls } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 import { Canvas as ThreeCanvas } from '@react-three/fiber'
 import init from 'geometry-processing'
 import { useWindowSize } from 'usehooks-ts'
@@ -17,8 +17,7 @@ export function Canvas({ children, camera = [0, 0, 5] }: Props) {
     <ThreeCanvas style={{ width, height }} camera={{ position: camera }}>
       {children}
       <ambientLight intensity={0.1} />
-      <directionalLight position={[0, 0, 5]} color="red" />
-      <Environment preset="sunset" environmentIntensity={0.5} />
+      <directionalLight position={[0, 0, 5]} color="#00cec8" />
       <OrbitControls />
     </ThreeCanvas>
   )

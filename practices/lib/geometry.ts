@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 
-export function buildGeometry(vertices: number[] | Float64Array, faces: number[] | Uint32Array) {
+export function buildGeometry(vertices: number[] | Float32Array, faces: number[] | Uint32Array) {
   const geometry = new THREE.BufferGeometry()
 
   const positions = new Float32Array(vertices)

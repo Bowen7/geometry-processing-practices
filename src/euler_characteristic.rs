@@ -6,11 +6,11 @@ use crate::utils::*;
 
 #[wasm_bindgen]
 pub fn wasm_euler_characteristic(
-  vertices: Vec<f64>,
+  vertices: Vec<f32>,
   faces: Vec<usize>,
 ) -> Result<JsValue, JsError> {
-  let F = build_faces(faces);
-  let V = build_vertices(vertices);
+  let F = build_F(faces);
+  let V = build_V(vertices);
   let Chi = euler_characteristic(&V, &F);
 
   let result = js_sys::Object::new();
@@ -19,7 +19,7 @@ pub fn wasm_euler_characteristic(
   Ok(result.into())
 }
 
-pub fn euler_characteristic(V: &Mat<f64>, F: &Mat<usize>) -> i64 {
+pub fn euler_characteristic(V: &Mat<f32>, F: &Mat<usize>) -> i64 {
   let E = edges(F, V.nrows());
   V.nrows() as i64 - E.nrows() as i64 + F.nrows() as i64
 }

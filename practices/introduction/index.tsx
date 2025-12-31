@@ -10,7 +10,7 @@ import { buildGeometry } from '@/lib/geometry'
 import { parseOff } from '@/lib/off'
 
 interface BunnyProps {
-  vertices: Float64Array
+  vertices: Float32Array
   faces: Uint32Array
 }
 function Bunny({ vertices, faces }: BunnyProps) {
@@ -22,7 +22,7 @@ function Bunny({ vertices, faces }: BunnyProps) {
   )
 }
 
-function getLines(edges: Uint32Array, vertices: Float64Array) {
+function getLines(edges: Uint32Array, vertices: Float32Array) {
   const lines: [number, number, number][] = []
   for (let i = 0; i < edges.length / 2; i++) {
     const v1 = edges[i * 2]
@@ -52,7 +52,7 @@ function Edges({ vertices, faces }: EdgesProps) {
   )
 }
 
-export function Practice01() {
+export function IntroductionPractice() {
   const { data } = useQuery({
     queryKey: ['bunny'],
     queryFn: () => fetch('data/bunny.off').then(parseOff),

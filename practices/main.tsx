@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <Routes>
-          <Route path="/" element={<Navigate to="/01" replace />} />
+          <Route path="/" element={<Navigate to="/introduction" replace />} />
           {practices.map(practice => (
             <Route
               key={practice.path}
@@ -25,6 +25,7 @@ createRoot(document.getElementById('root')!).render(
               element={practice.element}
             />
           ))}
+          <Route path="*" element={<Navigate to="/introduction" replace />} />
         </Routes>
         <PracticesSelect />
       </QueryClientProvider>

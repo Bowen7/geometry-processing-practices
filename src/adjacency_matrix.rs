@@ -1,9 +1,9 @@
 use faer::prelude::*;
 use faer::sparse::*;
 
-pub fn adjacency_matrix(faces: &Mat<usize>, vertex_count: usize) -> SparseColMat<usize, f64> {
+pub fn adjacency_matrix(faces: &Mat<usize>, vertex_count: usize) -> SparseColMat<usize, f32> {
   let m = faces.nrows();
-  let mut triplets: Vec<Triplet<usize, usize, f64>> = vec![];
+  let mut triplets: Vec<Triplet<usize, usize, f32>> = vec![];
   for i in 0..m {
     for j in 0..3 {
       let row = *faces.get(i, j);
@@ -12,7 +12,7 @@ pub fn adjacency_matrix(faces: &Mat<usize>, vertex_count: usize) -> SparseColMat
       triplets.push(Triplet::new(col, row, 1.0));
     }
   }
-  SparseColMat::<usize, f64>::try_new_from_triplets(vertex_count, vertex_count, &triplets).unwrap()
+  SparseColMat::<usize, f32>::try_new_from_triplets(vertex_count, vertex_count, &triplets).unwrap()
 }
 
 #[cfg(test)]

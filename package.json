@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "wasm:watch": "rm -rf pkg && watchexec -w src -e rs wasm-pack build --target web",
-    "dev": "pnpm wasm:watch && vite",
+    "dev": "pnpm wasm:watch & vite",
     "build": "wasm-pack build --target web && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

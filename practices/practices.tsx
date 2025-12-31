@@ -1,15 +1,15 @@
-import { Practice01 } from './01'
-import { Practice02 } from './02'
+import { IntroductionPractice } from './introduction'
+import { SmoothingPractice } from './smoothing'
 
 export const practices = [
   {
-    path: '/01',
+    path: '/introduction',
     label: 'Introduction',
-    element: <Practice01 />,
+    element: <IntroductionPractice />,
   },
   {
-    path: '/02',
-    label: 'Practice 02',
-    element: <Practice02 />,
+    path: '/smoothing',
+    label: 'Smoothing',
+    element: <SmoothingPractice />,
   },
 ]

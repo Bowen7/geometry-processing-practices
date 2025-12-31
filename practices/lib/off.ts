@@ -3,7 +3,7 @@ export async function parseOff(response: Response) {
   const lines = text.split('\n')
   const meta = lines[1].split(' ').map(Number)
   const [vertexCount, faceCount] = meta
-  const vertices = new Float64Array(vertexCount * 3)
+  const vertices = new Float32Array(vertexCount * 3)
   const faces = new Uint32Array(faceCount * 3)
   for (let i = 0; i < vertexCount; i++) {
     const [x, y, z] = lines[2 + i].split(' ').map(Number)
