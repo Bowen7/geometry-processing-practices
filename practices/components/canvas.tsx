@@ -9,16 +9,17 @@ await init()
 interface Props {
   children?: React.ReactNode
   camera?: [number, number, number]
+  enableRotate?: boolean
 }
-export function Canvas({ children, camera = [0, 0, 5] }: Props) {
+export function Canvas({ children, camera = [0, 0, 5], enableRotate }: Props) {
   const { width, height } = useWindowSize()
 
   return (
     <ThreeCanvas style={{ width, height }} camera={{ position: camera }}>
       {children}
       <ambientLight intensity={0.1} />
-      <directionalLight position={[0, 0, 5]} color="#00cec8" />
-      <OrbitControls />
+      <directionalLight position={[0, 0, 5]} color="#fff" />
+      <OrbitControls enableRotate={enableRotate} />
     </ThreeCanvas>
   )
 }

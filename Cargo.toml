@@ -26,6 +26,8 @@ serde = { version = "1.0", features = ["derive"] }
 serde-wasm-bindgen = "0.6"
 faer = { version = "0.23.2", default-features = false, features = ["std", "sparse-linalg"] }
 
+web-time = "1.1.0"
+
 [dev-dependencies]
 wasm-bindgen-test = "0.3.34"
 approx = "0.5.1"

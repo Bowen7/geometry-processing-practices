@@ -9,7 +9,6 @@ export function buildGeometry(vertices: number[] | Float32Array, faces: number[]
   geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
   geometry.setIndex(new THREE.BufferAttribute(indices, 1))
   geometry.computeVertexNormals()
-  geometry.center()
 
   return geometry
 }

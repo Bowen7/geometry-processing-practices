@@ -25,6 +25,7 @@ pub fn smooth(V: &Mat<f32>, F: &Mat<usize>, lambda: f64, n: usize) -> Mat<f32> {
   U
 }
 
+// TODO: Normalize lambda by diagonal length.
 #[wasm_bindgen]
 pub fn wasm_smooth(
   vertices: Vec<f32>,

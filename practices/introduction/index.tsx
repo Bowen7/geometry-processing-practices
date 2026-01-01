@@ -1,5 +1,5 @@
 import type { LineSegments2 } from 'three/addons/lines/LineSegments2.js'
-import { Line } from '@react-three/drei'
+import { Center, Line } from '@react-three/drei'
 import { useQuery } from '@tanstack/react-query'
 import { wasm_edges, wasm_euler_characteristic } from 'geometry-processing'
 import { useControls } from 'leva'
@@ -16,9 +16,11 @@ interface BunnyProps {
 function Bunny({ vertices, faces }: BunnyProps) {
   const geometry = buildGeometry(vertices, faces)
   return (
-    <mesh geometry={geometry} scale={20}>
-      <meshPhongMaterial />
-    </mesh>
+    <Center>
+      <mesh geometry={geometry} scale={20}>
+        <meshPhongMaterial />
+      </mesh>
+    </Center>
   )
 }
 

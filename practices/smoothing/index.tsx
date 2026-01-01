@@ -1,3 +1,4 @@
+import { Center } from '@react-three/drei'
 import { useQuery } from '@tanstack/react-query'
 import { wasm_smooth } from 'geometry-processing'
 import { useControls } from 'leva'
@@ -38,9 +39,11 @@ function Smoothing({ vertices: initialVertices, faces }: { vertices: Float32Arra
   }, [time, set])
   const geometry = buildGeometry(vertices, faces)
   return (
-    <mesh geometry={geometry} scale={0.01} rotation-x={-Math.PI / 2}>
-      <meshPhongMaterial />
-    </mesh>
+    <Center>
+      <mesh geometry={geometry} scale={0.01} rotation-x={-Math.PI / 2}>
+        <meshPhongMaterial />
+      </mesh>
+    </Center>
   )
 }
 
