@@ -4,9 +4,9 @@ use faer::sparse::linalg::solvers::*;
 use faer::sparse::*;
 use faer::Mat;
 use faer::Side;
-use web_sys::console;
-use web_time::Instant;
+use wasm_bindgen::prelude::*;
 
+#[wasm_bindgen]
 pub struct MinQuadData {
   pub n: usize,
   llt: Option<Llt<usize, f32>>,

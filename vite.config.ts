@@ -1,25 +1,22 @@
-import path from "path";
-import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, type PluginOption } from "vite";
-import react from "@vitejs/plugin-react";
-import wasm from "vite-plugin-wasm";
-import topLevelAwait from "vite-plugin-top-level-await";
+import type { PluginOption } from 'vite'
+import path from 'node:path'
+import tailwindcss from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
+import topLevelAwait from 'vite-plugin-top-level-await'
+import wasm from 'vite-plugin-wasm'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react({
-      babel: {
-        plugins: [["babel-plugin-react-compiler"]],
-      },
-    }),
+    react(),
     tailwindcss() as PluginOption,
     wasm(),
     topLevelAwait(),
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./practices"),
+      '@': path.resolve(__dirname, './practices'),
     },
   },
-});
+})

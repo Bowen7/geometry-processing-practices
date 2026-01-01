@@ -1,4 +1,3 @@
-use faer::sparse::*;
 use faer::Mat;
 
 use crate::cotmatrix::*;
@@ -23,29 +22,27 @@ pub fn biharmonic_solve(data: &MinQuadData, known_values: &Mat<f32>) -> Option<M
 }
 
 #[wasm_bindgen]
-pub struct BiharmonicHandler {
-  data: MinQuadData,
+pub fn wasm_biharmonic_precompute(
+  vertices: Vec<f32>,
+  faces: Vec<usize>,
+  b: Vec<usize>,
+) -> Result<JsValue, JsError> {
+  let V = build_V(vertices);
+  let F = build_F(faces);
+  let data = biharmonic_precompute(&V, &F, &b);
+  Ok(data.into())
 }
 
 #[wasm_bindgen]
-impl BiharmonicHandler {
-  #[wasm_bindgen(constructor)]
-  pub fn new(vertices: Vec<f32>, faces: Vec<usize>, b: Vec<usize>) -> Self {
-    let V = build_V(vertices);
-    let F = build_F(faces);
-    let data = biharmonic_precompute(&V, &F, &b);
-    Self { data }
+pub fn wasm_biharmonic_solve(
+  data: &MinQuadData,
+  known_values: Vec<f32>,
+) -> Result<JsValue, JsError> {
+  let known_values = build_V(known_values);
+  let U = biharmonic_solve(data, &known_values);
+  let result = js_sys::Object::new();
+  if let Some(U) = U {
+    js_sys::Reflect::set(&result, &"displacements".into(), &build_vertices(U).into()).unwrap();
   }
-
-  #[wasm_bindgen]
-  pub fn solve(&self, known_values: Vec<f32>) -> Result<JsValue, JsError> {
-    let known_values = build_V(known_values);
-    let U = biharmonic_solve(&self.data, &known_values);
-    let result = js_sys::Object::new();
-    if let Some(U) = U {
-      let displacements = build_vertices(U);
-      js_sys::Reflect::set(&result, &"displacements".into(), &displacements.into()).unwrap();
-    }
-    Ok(result.into())
-  }
+  Ok(result.into())
 }

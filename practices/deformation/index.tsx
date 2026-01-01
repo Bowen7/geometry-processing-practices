@@ -3,7 +3,7 @@ import { Billboard, Center } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { useQuery } from '@tanstack/react-query'
 import { useGesture } from '@use-gesture/react'
-import { BiharmonicHandler } from 'geometry-processing'
+import { wasm_biharmonic_precompute, wasm_biharmonic_solve } from 'geometry-processing'
 import { button, useControls } from 'leva'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas } from '@/components/canvas'
@@ -67,17 +67,16 @@ function Deformation({ vertices: initialVertices, faces }: { vertices: Float32Ar
   const controlDisplacementsRef = useRef<number[]>(initialControlDisplacements)
   const previousControlDisplacementsRef = useRef<number[]>([])
 
-  const handler = useMemo(() => {
+  const data = useMemo(() => {
     const b = new Uint32Array(controls)
-    const handler = new BiharmonicHandler(initialVertices, faces, b)
-    return handler
+    return wasm_biharmonic_precompute(initialVertices, faces, b)
   }, [initialVertices, faces, controls])
 
   useEffect(() => {
     return () => {
-      handler.free()
+      data.free()
     }
-  }, [handler])
+  }, [data])
 
   useControls(() => ({
     'reset controls': button(() => {
@@ -110,7 +109,7 @@ function Deformation({ vertices: initialVertices, faces }: { vertices: Float32Ar
     newBc[index * 3] = previousControlDisplacementsRef.current[index * 3] + offset[0]
     newBc[index * 3 + 1] = previousControlDisplacementsRef.current[index * 3 + 1] + offset[1]
     controlDisplacementsRef.current = newBc
-    const { displacements } = handler.solve(new Float32Array(controlDisplacementsRef.current))
+    const { displacements } = wasm_biharmonic_solve(data, new Float32Array(controlDisplacementsRef.current))
     const vertices = new Float32Array(initialVertices)
     for (let i = 0; i < vertices.length; i++) {
       vertices[i] += displacements[i]
