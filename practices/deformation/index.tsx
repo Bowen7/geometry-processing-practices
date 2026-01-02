@@ -106,8 +106,8 @@ function Deformation({ vertices: initialVertices, faces }: { vertices: Float32Ar
 
   const onDrag = (index: number, offset: [number, number]) => {
     const newBc = [...previousControlDisplacementsRef.current]
-    newBc[index * 3] = previousControlDisplacementsRef.current[index * 3] + offset[0]
-    newBc[index * 3 + 1] = previousControlDisplacementsRef.current[index * 3 + 1] + offset[1]
+    newBc[index * 3] = offset[0]
+    newBc[index * 3 + 1] = offset[1]
     controlDisplacementsRef.current = newBc
     const { displacements } = wasm_biharmonic_solve(data, new Float32Array(controlDisplacementsRef.current))
     const vertices = new Float32Array(initialVertices)
